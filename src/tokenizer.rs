@@ -23,10 +23,12 @@ impl<'a> Tokenizer<'a> {
 
     fn consume_char(&mut self) -> Option<char> {
         let mut iter = self.input[self.position..].char_indices();
-        let (_, current_char) = iter.next()?;
-        let (next_idx, _) = iter.next().unwrap_or((self.input.len(), '\0'));
-        self.position += next_idx;
-        Some(current_char)
+        if let Some((_, current_char)) = iter.next() {
+            self.position += current_char.len_utf8();
+            Some(current_char)
+        } else {
+            None
+        }
     }
 
     fn consume_while<F>(&mut self, test: F) -> String

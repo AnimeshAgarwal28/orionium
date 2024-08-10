@@ -10,5 +10,7 @@ fn main() {
     let mut parser = Parser::new(html);
     let dom = parser.parse();
 
-    println!("{:#?}", dom);
+    // Render the DOM and print the HTML in console for now.
+    let rendered_html = dom.render();
+    println!("{}", rendered_html);
 }
