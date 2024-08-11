@@ -2,6 +2,7 @@ mod dom;
 mod parser;
 mod tokenizer;
 
+use dom::Render;
 use parser::Parser;
 
 fn main() {
@@ -10,7 +11,7 @@ fn main() {
     let mut parser = Parser::new(html);
     let dom = parser.parse();
 
-    // Render the DOM and print the HTML in console for now.
+    // Render the DOM and print the HTML
     let rendered_html = dom.render();
     println!("{}", rendered_html);
 }
