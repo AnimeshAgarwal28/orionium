@@ -6,6 +6,7 @@ use dom::Render;
 use parser::Parser;
 
 fn main() {
+    // Sample HTML for testing.
     let html = "<html><head><title>My Website</title></head><body><h1>Welcome!</h1><p>This is a test.</p></body></html>";
 
     let mut parser = Parser::new(html);
