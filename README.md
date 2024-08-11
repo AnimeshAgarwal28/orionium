@@ -1,5 +1,5 @@
 # Orionium
-## A rust 🦀 based browser engine.
+### A rust 🦀 based browser engine.
 
 Orionium is a browser engine written in Rust. For now the project aims to provide a foundation for parsing HTML, constructing a DOM, and rendering web pages. As it evolves, Orionium will serve as the backbone for a fully-featured web browser, supporting HTML, CSS, and potentially JavaScript execution.
 
