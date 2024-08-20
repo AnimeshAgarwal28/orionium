@@ -96,4 +96,29 @@ impl<'a> Tokenizer<'a> {
             Some(Token::Text(text))
         }
     }
+
+    pub fn tokenize(&mut self) -> Vec<Token> {
+        let mut tokens = Vec::new();
+        while let Some(token) = self.next_token() {
+            tokens.push(token);
+        }
+        tokens
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_tokenize_simple_html() {
+        let html = "<p>Hello, world!</p>";
+        let mut tokenizer = Tokenizer::new(html);
+        let tokens = tokenizer.tokenize();
+
+        assert_eq!(tokens.len(), 3);
+        assert!(matches!(tokens[0], Token::StartTag(ref tag, _) if tag == "p"));
+        assert!(matches!(tokens[1], Token::Text(ref text) if text == "Hello, world!"));
+        assert!(matches!(tokens[2], Token::EndTag(ref tag) if tag == "p"));
+    }
 }
