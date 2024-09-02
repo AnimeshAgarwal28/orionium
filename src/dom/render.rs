@@ -2,6 +2,7 @@ use crate::dom::{Node, NodeType};
 
 pub trait Render {
     fn render(&self) -> String;
+    // NOTE: use this trait for future implementations of render, currently defining a trait here is useless.
 }
 
 impl Render for Node {
